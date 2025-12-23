@@ -42,8 +42,8 @@ const CONFIG: Config = {
     ],
     defaultFilters: [
       // DMs
-      ".xa0zjtf.x1e56ztr.x2lah0s.x1c4vz4f", // Notes panel
-      "div.xcdnw81.xmzvs34.xwib8y2.xf159sx.x1y1aw1k.xl56j7k.x78zum5.x1ypdohk.xstzfhl.x1sy0etr.x18oe1m7.x1ejq31n.xjbqb8w.x6s0dn4.x1a2a7pz.xggy1nq.x1hl2dhg.x16tdsg8.x1lziwak.xat24cr.x14z9mp.xdj266r.xe8uvvx.x9f619.x14e42zd.x1qhh985.x10w94by.x972fbf.x1i10hfl:nth-of-type(3)", // Heart icon
+      ".xhjk10j.x2lah0s.x1c4vz4f", // Notes panel
+      "div.xcdnw81.xmzvs34.xwib8y2.xf159sx.x1y1aw1k.xl56j7k.x78zum5.x1ypdohk.xstzfhl.x1sy0etr.x18oe1m7.x1ejq31n.xjbqb8w.x6s0dn4.x1a2a7pz.xggy1nq.x1hl2dhg.x16tdsg8.x1lziwak.xat24cr.x14z9mp.xdj266r.x3ct3a4.x9f619.x14e42zd.x1qhh985.x10w94by.x972fbf.x1i10hfl:nth-of-type(3)", // Heart icon
       // General
       ".xh8yej3.x1n2onr6.xaw8158.x1q0g3np.x78zum5.x9f619.x178xt8z.x13fuv20.x1yvgwvq.xaeubzz.x1o5hw5a > .xh8yej3.xaw8158.x78zum5 > div:nth-of-type(1)", // Nav Home icon
       ".xh8yej3.x1n2onr6.xaw8158.x1q0g3np.x78zum5.x9f619.x178xt8z.x13fuv20.x1yvgwvq.xaeubzz.x1o5hw5a > .xh8yej3.xaw8158.x78zum5 > div:nth-of-type(2)", // Nav Explore icon
@@ -52,11 +52,11 @@ const CONFIG: Config = {
       "._abpk._acc8", // "Use the app" popup
       ".xp4054r.x1q0g3np.x78zum5.x6s0dn4 > .x1nhvcw1.x1oa3qoh.x1qjc9v5.xqjyukv.xdt5ytf.x2lah0s.x1c4vz4f.xryxfnj.x1plvlek.x1uhb9sk.xo71vjh.x5pf9jr.x13lgxp2.x168nmei.x78zum5.xjbqb8w.x9f619", // Open App button
       // Profile
-      ".x1vjfegm.x1a2a7pz.x1lku1pv.x87ps6o.x1q0g3np.x3nfvp2.xo1y3bh.x140muxe.xu25z0z.x1fmog5m.x1t137rt.xggy1nq.x1hl2dhg.x16tdsg8.x1n2onr6.x1c1uobl.x18d9i69.xyri2b.xexx8yu.xeuugli.x2lwn1j.x1lziwak.xat24cr.x14z9mp.xdj266r.xe8uvvx.x2lah0s.xdl72j9.x1ypdohk.x9f619.x14e42zd.x1qhh985.x10w94by.x972fbf.x1t7ytsu.x1q0q8m5.x18b5jzi.x13fuv20.x1phubyo.xqeqjp1.xc5r6h4.xjqpnuy.xjbqb8w.x1qjc9v5.x1i10hfl", // Profile Note bubble
+      ".x1vjfegm.x1a2a7pz.x1lku1pv.x87ps6o.x1q0g3np.x3nfvp2.xo1y3bh.x140muxe.xu25z0z.x1fmog5m.x1t137rt.xggy1nq.x1hl2dhg.x16tdsg8.x1n2onr6.x1c1uobl.x18d9i69.xyri2b.xexx8yu.xeuugli.x2lwn1j.x1lziwak.xat24cr.x14z9mp.xdj266r.x3ct3a4.x2lah0s.xdl72j9.x1ypdohk.x9f619.x14e42zd.x1qhh985.x10w94by.x972fbf.x1t7ytsu.x1q0q8m5.x18b5jzi.x13fuv20.x1phubyo.xqeqjp1.xc5r6h4.xjqpnuy.xjbqb8w.x1qjc9v5.x1i10hfl", // Profile Note bubble
       "._ab1b._ab18 > .x1qrby5j.x7ja8zs.x1t2pt76.x1lytzrv.xedcshv.xarpa2k.x3igimt.x12ejxvf.xaigb6o.x1beo9mf.xv2umb2.x1jfb8zj.x1h9r5lt.x1h91t0o.x4k7w5x", // Threads icon
-      ".x1nhvcw1.x1oa3qoh.x6s0dn4.xqjyukv.x1q0g3np.x2lah0s.x1c4vz4f.xryxfnj.x1plvlek.x1uhb9sk.xbiv7yw.x16uus16.x1ga7v0g.x15mokao.x78zum5.x3pnbk8.xjbqb8w.x9f619", // Threads username
-      ".x1jfgfrl.xysbk4d.x1rlzn12.x1xdureb.xc3tme8", // Account insights
-      "div.xl56j7k.xs83m0k.x1iyjqo2.x1r8uery.x78zum5.x6s0dn4.x1c1uobl.x18d9i69.xyri2b.xexx8yu.x1lziwak.xat24cr.x14z9mp.xdj266r.html-div:has(> ._a6hd.xlxy82.x1q0q8m5.x16stqrj.x1xnnf8n.x106a9eq.xn3w4p2.x1c4vz4f.x1lku1pv.x1hl2dhg.xl56j7k.x1q0g3np.x78zum5.x6s0dn4.x1a2a7pz.xggy1nq.x16tdsg8.x18d9i69.xexx8yu.x1lziwak.xat24cr.x14z9mp.xdj266r.xe8uvvx.x1ypdohk.x9f619.x14e42zd.x10w94by.x972fbf.xstzfhl.x18oe1m7.x1ejq31n.xjbqb8w.x1i10hfl[href$='/feed/'])", // Profile feed tab
+      ".x1nhvcw1.x1oa3qoh.x1qjc9v5.xqjyukv.xdt5ytf.x2lah0s.x1c4vz4f.xryxfnj.x1plvlek.x1uhb9sk.x1gslohp.xbiv7yw.x16uus16.x1ga7v0g.x15mokao.x78zum5.x1r0jzty.xjbqb8w.x5lhr3w.x9f619.x1c1uobl.x18d9i69.xyri2b.xexx8yu.x1lziwak.xat24cr.x14z9mp.html-div", // Threads username
+      "section.x1jfgfrl:nth-of-type(3)", // Account insights
+      "div.xg7l0n3.xl56j7k.xs83m0k.x1iyjqo2.x1r8uery.x78zum5.x6s0dn4.x1c1uobl.x18d9i69.xyri2b.xexx8yu.x1lziwak.xat24cr.x14z9mp.xdj266r.html-div:has(> a[href$='/feed/'])", // Profile feed tab
       // Feed
       ".xh8yej3.xl56j7k.x1q0g3np.x78zum5.x1qjc9v5", // Feed & Stories
       ".x1n327nk.xixxii4.x1o0tod.xtijo5x", // New posts popup
@@ -106,20 +106,21 @@ const CONFIG: Config = {
       ".top.fixed-container.m > div > div > div > div[role='button'][aria-label='Back'][data-actual-height='56']", // Bookmarks back button
       "div:has(> div > div > div[aria-label='Also From Meta, Close'])", // Also from Meta
       // Bookmark tiles
-      "div[role='listitem']:has(> div > div[aria-label='Reels'])",
-      "div[role='listitem']:has(> div > div[aria-label='Messages'])",
-      "div[role='listitem']:has(> div > div[aria-label='Video'])",
-      "div[role='listitem']:has(> div > div[aria-label='Live videos'])",
+      "div[role='listitem'] > div:has(> div[aria-label='Reels'])",
+      "div[role='listitem'] > div:has(> div[aria-label='Messages'])",
+      "div[role='listitem'] > div:has(> div[aria-label='Video'])",
+      "div[role='listitem'] > div:has(> div[aria-label='Live videos'])",
       "div[role='listitem'] > div:has(> div[aria-label='Pages'])",
       "div[role='listitem'] > div:has(> div[aria-label='Memories'])",
-      "div[role='listitem']:has(> div > div[aria-label='Games'])",
-      "div[role='listitem']:has(> div > div[aria-label='Ads Manager'])",
-      "div[role='listitem']:has(> div > div[aria-label='Feeds'])",
-      "div[role='listitem']:has(> div > div[aria-label='Birthdays'])",
+      "div[role='listitem'] > div:has(> div[aria-label='Games'])",
+      "div[role='listitem'] > div:has(> div[aria-label='Ads Manager'])",
+      "div[role='listitem'] > div:has(> div[aria-label='Feeds'])",
+      "div[role='listitem'] > div:has(> div[aria-label='Birthdays'])",
+      "div[role='listitem']:has(> div > div[aria-label='Friends'])",
       // Search
       "div[data-type='vscroller'] > div > div[data-type='multi'] > div > div[role='button']", // Bookmark buttons
       // Profile
-      "div[style*='clip-path:inset(0 0 0 0 round 30px)'] > div:has(> h4[data-mcomponent='ServerTextArea'])", // Profile notification badge
+      "div[style*='clip-path:inset(0 0 0 0 round 30px)'] > div:has(> h4[data-mcomponent='ServerTextArea'] > div.native-text)", // Profile notification badge
       // Feed
       "div:has(> div > div[role='button'][aria-label='Go to profile'])", // Write post section
       "div[data-screen-id='124'] > div[data-type='vscroller'] > div:has(> div > div > div > div[data-is-h-scrollable='true'])", // Stories section
@@ -165,7 +166,7 @@ const CONFIG: Config = {
       // Feed
       "ytm-browse:has(> ytm-single-column-browse-results-renderer > div > div[tab-identifier='FEwhat_to_watch'])", // Home feed
       "div.rich-grid-sticky-header.rich-grid-renderer-header:has(> ytm-feed-filter-chip-bar-renderer)", // Feed filter bar
-      "ytm-item-section-renderer:has(> lazy-list > ytm-reel-shelf-renderer.item)", // Shorts shelf
+      "ytm-reel-shelf-renderer.item", // Shorts shelf
       "ytm-rich-section-renderer:has(> div.rich-section-content > grid-shelf-view-model.ytGridShelfViewModelHost)", // Shorts grid shelf
       "ytm-video-with-context-renderer:has(> ytm-media-item.big-shorts-singleton)", // Shorts video
       // Video player
@@ -175,7 +176,7 @@ const CONFIG: Config = {
       "ytm-single-column-watch-next-results-renderer > ytm-item-section-renderer:has(> lazy-list > ad-slot-renderer)", // Ads below video (signed out)
       "ytm-companion-slot:has(> ytm-companion-ad-renderer)", // Companion ad slot
       "ytm-comment-replies-renderer", // Comment replies
-      "yt-button-shape:has(> a[aria-label='Open App'])", // Open App button
+      "a[aria-label='Open App']", // Open App button
       "player-endscreen", // Player end screen
       "yt-comment-teaser-carousel-item-view-model", // Comment teaser carousel item
       "div.fullscreen-watch-next-entrypoint-wrapper", // Fullscreen watch next entrypoint
