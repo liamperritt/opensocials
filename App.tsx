@@ -269,7 +269,7 @@ const App = () => {
         return;
       }
       // Otherwise, redirect to the source URL
-      if (currentUrl !== config.sourceUrl && !wentBack) {
+      if (currentUrl !== config.sourceUrl) {
         console.log("Redirecting to URL:", config.sourceUrl);
         redirectToUrl(config.sourceUrl);
         return;
