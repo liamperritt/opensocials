@@ -245,6 +245,7 @@ const App = () => {
 
   const redirectToSafety = (navState: any) => {
     console.log("Checking if we need to redirect to safety...");
+    console.log("Current URL:", currentUrl);
     if (!webViewRef.current) return;
     // If we are logging in, redirect to the sign-in URL if it exists
     if (!loggedIn && loggingIn && config.signInUrl && (navState.url == config.sourceUrl || navState.url == config.baseUrl)) {
@@ -255,13 +256,19 @@ const App = () => {
     // Redirect from base Url, but avoid infinite loops
     if (
       (
-        navState.url === config.baseUrl && config.redirectFromBaseUrl && !loggingIn
-        && currentUrl !== config.baseUrl && currentUrl !== config.sourceUrl && !wentBack
+        (navState.url === config.baseUrl || navState.url === `${config.baseUrl}/`) && config.redirectFromBaseUrl
+        && !loggingIn && (currentUrl !== config.baseUrl && currentUrl !== `${config.baseUrl}/`)
       )
       || config.redirectFromExactUrls.includes(navState.url)
       || config.redirectFromUrlPrefixes.some(url => navState.url.startsWith(url))
     ) {
-      // Redirect to the source URL
+      // If we were on the source URL and are navigating to a forbidden URL
+      if (config.fromSourceUrlRedirectToUrl && currentUrl === config.sourceUrl) {
+        console.log("Redirecting to URL:", config.fromSourceUrlRedirectToUrl);
+        redirectToUrl(config.fromSourceUrlRedirectToUrl);
+        return;
+      }
+      // Otherwise, redirect to the source URL
       console.log("Redirecting to URL:", config.sourceUrl);
       redirectToUrl(config.sourceUrl);
       return;
@@ -346,6 +353,9 @@ const App = () => {
 
     // Redirect to the source URL if necessary
     redirectToSafety(navState);
+
+    // Ensure currentUrl is set on navigation state change
+    setCurrentUrl(navState.url);
   };
 
   const handleProcessTermination = () => {

@@ -9,6 +9,7 @@ interface Config {
     redirectFromUrlPrefixes: string[];
     redirectFromExactUrls: string[];
     redirectFromBaseUrlWithSelector?: string;
+    fromSourceUrlRedirectToUrl?: string;
     openableExternalUrls: string[];
     webAppSessionCookies: string[];
     clickSelectors?: string[];
@@ -32,6 +33,7 @@ const CONFIG: Config = {
       "https://www.instagram.com/?variant=favorites",
     ],
     redirectFromExactUrls: [],
+    fromSourceUrlRedirectToUrl: "https://www.instagram.com/accounts/settings/",
     openableExternalUrls: [
       "https://www.facebook.com/instagram/",
       "https://www.fbsbx.com/",
