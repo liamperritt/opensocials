@@ -248,7 +248,7 @@ const App = () => {
     console.log("Current URL:", currentUrl);
     if (!webViewRef.current) return;
     // If we are logging in, redirect to the sign-in URL if it exists
-    if (!loggedIn && loggingIn && config.signInUrl && (navState.url == config.sourceUrl || navState.url == config.baseUrl)) {
+    if (!loggedIn && loggingIn && config.signInUrl && (navState.url === config.sourceUrl || navState.url === config.baseUrl)) {
       console.log("Redirecting to sign-in URL:", config.signInUrl);
       redirectToUrl(config.signInUrl);
       return;
@@ -269,9 +269,11 @@ const App = () => {
         return;
       }
       // Otherwise, redirect to the source URL
-      console.log("Redirecting to URL:", config.sourceUrl);
-      redirectToUrl(config.sourceUrl);
-      return;
+      if (currentUrl !== config.sourceUrl && !wentBack) {
+        console.log("Redirecting to URL:", config.sourceUrl);
+        redirectToUrl(config.sourceUrl);
+        return;
+      }
     }
 
     if (config.redirectFromBaseUrlWithSelector && navState.url.endsWith(`${config.baseUrlShort}/`)) {
