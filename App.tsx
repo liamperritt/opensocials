@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { View, SafeAreaView, ActivityIndicator, StyleSheet, BackHandler, Text, Platform, Linking, TouchableOpacity, Image, Modal, Pressable, ScrollView } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import WebView from "react-native-webview";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CookieManager from '@react-native-cookies/cookies';
@@ -55,6 +56,8 @@ const App = () => {
   const [canGoBack, setCanGoBack] = useState(false);
   const [wentBack, setWentBack] = useState(false);
   const [hasLoadError, setHasLoadError] = useState(false);
+
+  const insets = useSafeAreaInsets();
 
   const fetchFiltersConfig = async (appId: string) => {
     console.log("Fetching filters config for app:", appId);
@@ -542,41 +545,45 @@ const App = () => {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <WebView style={styles.container}
-        ref={webViewRef}
-        source={{ uri: config.sourceUrl }}
-        injectedJavaScript={injectedJavaScript}
-        javaScriptEnabled={true}
-        javaScriptCanOpenWindowsAutomatically={true}
-        onMessage={(syntheticEvent) => {handleMessage(syntheticEvent.nativeEvent)}}
-        domStorageEnabled={true}
-        startInLoadingState={true}
-        renderLoading={() => <View />}
-        onError={() => {handleLoadError()}}
-        onLoad={(syntheticEvent) => {handleLoadSuccess(syntheticEvent.nativeEvent)}}
-        onLoadStart={(syntheticEvent) => {trackNavState(syntheticEvent.nativeEvent)}}
-        onShouldStartLoadWithRequest={handleShouldStartLoadWithRequest}
-        onNavigationStateChange={handleNavigationStateChange}
-        onOpenWindow={(syntheticEvent) => {openLinkInWebView(syntheticEvent.nativeEvent)}}
-        onContentProcessDidTerminate={handleProcessTermination}
-        onRenderProcessGone={handleProcessTermination}
-        allowsBackForwardNavigationGestures={true}
-        pullToRefreshEnabled={true}
-        mediaPlaybackRequiresUserAction={true}
-        allowsInlineMediaPlayback={true}
-        allowsPictureInPictureMediaPlayback={true}
-        allowsFullscreenVideo={true}
-        contentMode={"mobile"}
-      />
-      {hasLoadError && (
-        <View style={styles.errorOverlay}>
-          <Text style={styles.errorTitle}>Unable to load page</Text>
-          <Text style={styles.errorSubtitle}>Please check your internet connection.</Text>
-          <ActivityIndicator size="large" color="white"/>
-        </View>
-      )}
-    </SafeAreaView>
+    <View style={{
+      flex: 1,
+      backgroundColor: 'black',
+      paddingTop: insets.top,
+    }}>
+        <WebView style={styles.container}
+          ref={webViewRef}
+          source={{ uri: config.sourceUrl }}
+          injectedJavaScript={injectedJavaScript}
+          javaScriptEnabled={true}
+          javaScriptCanOpenWindowsAutomatically={true}
+          onMessage={(syntheticEvent) => {handleMessage(syntheticEvent.nativeEvent)}}
+          domStorageEnabled={true}
+          startInLoadingState={true}
+          renderLoading={() => <View />}
+          onError={() => {handleLoadError()}}
+          onLoad={(syntheticEvent) => {handleLoadSuccess(syntheticEvent.nativeEvent)}}
+          onLoadStart={(syntheticEvent) => {trackNavState(syntheticEvent.nativeEvent)}}
+          onShouldStartLoadWithRequest={handleShouldStartLoadWithRequest}
+          onNavigationStateChange={handleNavigationStateChange}
+          onOpenWindow={(syntheticEvent) => {openLinkInWebView(syntheticEvent.nativeEvent)}}
+          onContentProcessDidTerminate={handleProcessTermination}
+          onRenderProcessGone={handleProcessTermination}
+          allowsBackForwardNavigationGestures={true}
+          pullToRefreshEnabled={true}
+          mediaPlaybackRequiresUserAction={true}
+          allowsInlineMediaPlayback={true}
+          allowsPictureInPictureMediaPlayback={true}
+          allowsFullscreenVideo={true}
+          contentMode={"mobile"}
+        />
+        {hasLoadError && (
+          <View style={styles.errorOverlay}>
+            <Text style={styles.errorTitle}>Unable to load page</Text>
+            <Text style={styles.errorSubtitle}>Please check your internet connection.</Text>
+            <ActivityIndicator size="large" color="white"/>
+          </View>
+        )}
+    </View>
   );
 };
 
