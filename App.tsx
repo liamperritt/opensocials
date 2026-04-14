@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { View, SafeAreaView, ActivityIndicator, StyleSheet, BackHandler, Text, Platform, Linking, TouchableOpacity, Image, Modal, Pressable, ScrollView } from "react-native";
+import { View, SafeAreaView, ActivityIndicator, StyleSheet, BackHandler, Text, Platform, Linking, TouchableOpacity, Image, Modal, Pressable, ScrollView, useColorScheme } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import WebView from "react-native-webview";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -45,6 +45,10 @@ const App = () => {
   const webViewRef = useRef<WebView>(null);
   const defaultWebAppId = "instagram"; // Default web app ID
 
+  const insets = useSafeAreaInsets();
+  const colorScheme = useColorScheme();
+  const appBackgroundColor = colorScheme === "dark" ? "black" : "white";
+
   const [config, setConfig] = useState(CONFIG[defaultWebAppId]);
   const [injectedJavaScript, setInjectedJavaScript] = useState("");
   const [loggingIn, setLoggingIn] = useState(false);
@@ -56,8 +60,6 @@ const App = () => {
   const [canGoBack, setCanGoBack] = useState(false);
   const [wentBack, setWentBack] = useState(false);
   const [hasLoadError, setHasLoadError] = useState(false);
-
-  const insets = useSafeAreaInsets();
 
   const fetchFiltersConfig = async (appId: string) => {
     console.log("Fetching filters config for app:", appId);
@@ -547,10 +549,13 @@ const App = () => {
   return (
     <View style={{
       flex: 1,
-      backgroundColor: 'black',
+      backgroundColor: appBackgroundColor,
       paddingTop: insets.top,
     }}>
-        <WebView style={styles.container}
+        <WebView style={{
+          flex: 1,
+          backgroundColor: appBackgroundColor,
+        }}
           ref={webViewRef}
           source={{ uri: config.sourceUrl }}
           injectedJavaScript={injectedJavaScript}
