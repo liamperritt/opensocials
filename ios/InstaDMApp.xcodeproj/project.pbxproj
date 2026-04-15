@@ -275,7 +275,7 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = InstaDMApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = OpenSocials;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -309,7 +309,7 @@
 				DEVELOPMENT_TEAM = KJ3UV26DLX;
 				INFOPLIST_FILE = InstaDMApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = OpenSocials;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
