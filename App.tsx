@@ -72,7 +72,8 @@ const App = () => {
     } catch (error) {
       console.error("Failed to fetch filters config:", error);
     }
-    return JSON.stringify(appConfig.defaultFilters); // Fallback to default filters
+    const defaultFiltersFlattened: string[] = Object.values(appConfig.defaultFilters).flat();
+    return JSON.stringify(defaultFiltersFlattened); // Fallback to default filters
   };
 
   const constructInjectedJavaScript = (filtersConfig: string) => {
