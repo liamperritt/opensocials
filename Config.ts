@@ -1,77 +1,74 @@
-interface RedirectRule {
-  when: "blocked"|"unblocked";
+export interface RedirectRule {
+  when: "blocked" | "unblocked";
   fromUrl: string;
   toUrl: string;
   ifPreviousUrl?: string;
   ifNotPreviousUrl?: string;
+  withSelector?: string;
   exactMatch?: boolean;
-};
-
-interface Config {
-  [key: string]: {
-    webAppId: string;
-    baseUrlShort: string;
-    baseUrl: string;
-    sourceUrl: string;
-    signInUrl?: string;
-    redirectFromBaseUrl: boolean;
-    redirectFromUrlPrefixes: string[];
-    redirectFromExactUrls: string[];
-    redirectFromBaseUrlWithSelector?: string;
-    fromSourceUrlRedirectToUrl?: string;
-    openableExternalUrls: string[];
-    webAppSessionCookies: string[];
-    canUnblockFeatures: {[key: string]: boolean};
-    defaultRedirects: {[key: string]: RedirectRule[]};
-    defaultFilters: {[key: string]: string[]};
-    configUrl: string;
-  };
 }
 
-const CONFIG: Config = {
+export interface AppConfigEntry {
+  webAppId: string;
+  baseUrlShort: string;
+  baseUrl: string;
+  sourceUrl: string;
+  signInUrl?: string;
+  openableExternalUrls: string[];
+  webAppSessionCookies: string[];
+  canUnblockFeatures: {[key: string]: boolean};
+  defaultRedirects: {[key: string]: RedirectRule[]};
+  defaultFilters: {[key: string]: string[]};
+  configUrl: string;
+}
+
+export type AppConfigMap = {[key: string]: AppConfigEntry};
+
+const CONFIG: AppConfigMap = {
   instagram: {
     webAppId: "instagram",
     baseUrlShort: "instagram.com",
     baseUrl: "https://www.instagram.com",
     sourceUrl: "https://www.instagram.com/direct/inbox/",
-    redirectFromBaseUrl: true,
-    redirectFromUrlPrefixes: [
-      "https://www.instagram.com/explore/",
-      "https://www.instagram.com/reels/",
-      "https://www.instagram.com/notifications/",
-      "https://www.instagram.com/?variant=following",
-      "https://www.instagram.com/?variant=favorites",
-    ],
-    redirectFromExactUrls: [],
-    fromSourceUrlRedirectToUrl: "https://www.instagram.com/accounts/settings/",
     openableExternalUrls: [
       "https://www.facebook.com/instagram/",
       "https://www.fbsbx.com/",
     ],
-    webAppSessionCookies: [
-      "ds_user_id",
-      "sessionid",
-    ],
+    webAppSessionCookies: ["ds_user_id", "sessionid"],
     canUnblockFeatures: {
-      "distractions": false,
-      "feed": false,
-      "explore": false,
-      "reels": false,
-      "stories": false,
       "notes": true,
       "favorites": true,
+      "feed": false,
+      "reels": false,
+      "explore": false,
+      "stories": false,
+      "distractions": false,
     },
     defaultRedirects: {
       "distractions": [
         {
           "when": "blocked",
           "fromUrl": "https://www.instagram.com/notifications/",
+          "toUrl": "https://www.instagram.com/accounts/settings/",
+          "ifPreviousUrl": "https://www.instagram.com/direct/inbox/",
+        },
+        {
+          "when": "blocked",
+          "fromUrl": "https://www.instagram.com/notifications/",
           "toUrl": "https://www.instagram.com/direct/inbox/",
+          "ifNotPreviousUrl": "https://www.instagram.com/direct/inbox/",
+        },
+        {
+          "when": "blocked",
+          "fromUrl": "https://www.instagram.com/?variant=following",
+          "toUrl": "https://www.instagram.com/accounts/settings/",
+          "ifPreviousUrl": "https://www.instagram.com/direct/inbox/",
         },
         {
           "when": "blocked",
           "fromUrl": "https://www.instagram.com/?variant=following",
           "toUrl": "https://www.instagram.com/direct/inbox/",
+          "ifNotPreviousUrl": "https://www.instagram.com/direct/inbox/",
         },
       ],
       "feed": [],
@@ -79,15 +76,29 @@ const CONFIG: Config = {
         {
           "when": "blocked",
           "fromUrl": "https://www.instagram.com/explore/",
+          "toUrl": "https://www.instagram.com/accounts/settings/",
+          "ifPreviousUrl": "https://www.instagram.com/direct/inbox/",
+        },
+        {
+          "when": "blocked",
+          "fromUrl": "https://www.instagram.com/explore/",
           "toUrl": "https://www.instagram.com/direct/inbox/",
-        }
+          "ifNotPreviousUrl": "https://www.instagram.com/direct/inbox/",
+        },
       ],
       "reels": [
         {
           "when": "blocked",
           "fromUrl": "https://www.instagram.com/reels/",
+          "toUrl": "https://www.instagram.com/accounts/settings/",
+          "ifPreviousUrl": "https://www.instagram.com/direct/inbox/",
+        },
+        {
+          "when": "blocked",
+          "fromUrl": "https://www.instagram.com/reels/",
           "toUrl": "https://www.instagram.com/direct/inbox/",
-        }
+          "ifNotPreviousUrl": "https://www.instagram.com/direct/inbox/",
+        },
       ],
       "favorites": [
         {
@@ -150,7 +161,7 @@ const CONFIG: Config = {
           "toUrl": "https://www.instagram.com/?variant=favorites",
           "ifPreviousUrl": "https://www.instagram.com/direct/inbox/",
           "exactMatch": true,
-        }
+        },
       ],
       "stories": [],
       "notes": [],
@@ -168,6 +179,7 @@ const CONFIG: Config = {
         ".x1r695p9.xd9ej83.x78zum5", // Notifications icon
       ],
       "feed": [
+        ".xh8yej3.x1n2onr6.xaw8158.x1q0g3np.x78zum5.x9f619.x178xt8z.x13fuv20.x1yvgwvq.xaeubzz.x1o5hw5a > .xh8yej3.xaw8158.x78zum5 > div:nth-of-type(1)", // Nav Home icon
         "div.xg7l0n3.xl56j7k.xs83m0k.x1iyjqo2.x1r8uery.x78zum5.x6s0dn4.x1c1uobl.x18d9i69.xyri2b.xexx8yu.x1lziwak.xat24cr.x14z9mp.xdj266r.html-div:has(> a[href$='/feed/'])", // Profile feed tab
         ".x1xmf6yo.xh8yej3.x1n2onr6.x10wlt62.x6ikm8r.x5yr21d.xdt5ytf.x78zum5.x1wp8tw6.x1ihp6rs.xr2y4jy.x1whfx0g.x1i5p2am.xgf5ljw", // Following & Favourites dropdown
         ".x127lhb5.xxkxylk", // Following & Favourites dropdown indicator
@@ -182,50 +194,33 @@ const CONFIG: Config = {
         "div[data-reel-type='suggested']", // Suggested reels
       ],
       "stories": [
-        ".xh8yej3.xl56j7k.x1q0g3np.x78zum5.x1qjc9v5", // Stories panel
+        ".xvbhtw8.x1njnj16", // Stories panel
       ],
       "notes": [
         ".xhjk10j.x2lah0s.x1c4vz4f", // Notes panel
         ".x1vjfegm.x1a2a7pz.x1lku1pv.x87ps6o.x1q0g3np.x3nfvp2.xo1y3bh.x140muxe.xu25z0z.x1fmog5m.x1t137rt.xggy1nq.x1hl2dhg.x16tdsg8.x1n2onr6.x1c1uobl.x18d9i69.xyri2b.xexx8yu.xeuugli.x2lwn1j.x1lziwak.xat24cr.x14z9mp.xdj266r.x3ct3a4.x2lah0s.xdl72j9.x1ypdohk.x9f619.x14e42zd.x1qhh985.x10w94by.x972fbf.x1t7ytsu.x1q0q8m5.x18b5jzi.x13fuv20.x1phubyo.xqeqjp1.xc5r6h4.xjqpnuy.xjbqb8w.x1qjc9v5.x1i10hfl", // Profile Note bubble
       ],
       "favorites": [
-        ".xh8yej3.x1n2onr6.xaw8158.x1q0g3np.x78zum5.x9f619.x178xt8z.x13fuv20.x1yvgwvq.xaeubzz.x1o5hw5a > .xh8yej3.xaw8158.x78zum5 > div:nth-of-type(1)", // Nav Home icon
         ".x1nhvcw1.x1oa3qoh.x6s0dn4.xqjyukv.xdt5ytf.x2lah0s.x1c4vz4f.xryxfnj.x1plvlek.x1uhb9sk.xbiv7yw.x16uus16.x1ga7v0g.x15mokao.x78zum5.xjbqb8w.x9f619.x1c1uobl.x18d9i69.xyri2b.xexx8yu.x1lziwak.xat24cr.x14z9mp.xdj266r.html-div", // Feed
       ],
     },
-    configUrl: "https://raw.githubusercontent.com/liamperritt/social-minimalist-config/refs/heads/main/config/instagram/",
+    configUrl:
+      "https://raw.githubusercontent.com/liamperritt/social-minimalist-config/refs/heads/main/config/instagram/v2/",
   },
   facebook: {
     webAppId: "facebook",
     baseUrlShort: "facebook.com",
     baseUrl: "https://m.facebook.com/",
     sourceUrl: "https://m.facebook.com/bookmarks/",
-    redirectFromBaseUrl: false,
-    redirectFromUrlPrefixes: [
-      "https://www.facebook.com/",
-      "https://m.facebook.com/reel/",
-      "https://m.facebook.com/stories/",
-      "https://m.facebook.com/notifications/",
-    ],
-    redirectFromExactUrls: [
-      "https://m.facebook.com/watch/",
-      "https://m.facebook.com/watch/live/",
-    ],
-    redirectFromBaseUrlWithSelector: "div[data-screen-id='124']",
-    openableExternalUrls: [
-      "https://www.fbsbx.com/",
-    ],
-    webAppSessionCookies: [
-      "c_user",
-      "xs",
-    ],
+    openableExternalUrls: ["https://www.fbsbx.com/"],
+    webAppSessionCookies: ["c_user", "xs"],
     canUnblockFeatures: {
-      "distractions": false,
+      "pages": true,
       "feed": false,
-      "videos": false,
       "reels": false,
+      "videos": false,
       "stories": false,
-      "pages": false,
+      "distractions": false,
     },
     defaultRedirects: {
       "distractions": [
@@ -240,7 +235,15 @@ const CONFIG: Config = {
           "toUrl": "https://m.facebook.com/bookmarks/",
         },
       ],
-      "feed": [],
+      "feed": [
+        {
+          "when": "blocked",
+          "fromUrl": "https://m.facebook.com/",
+          "toUrl": "https://m.facebook.com/bookmarks/",
+          "withSelector": "div[data-screen-id='124']",
+          "exactMatch": true,
+        },
+      ],
       "videos": [
         {
           "when": "blocked",
@@ -260,14 +263,14 @@ const CONFIG: Config = {
           "when": "blocked",
           "fromUrl": "https://m.facebook.com/reel/",
           "toUrl": "https://m.facebook.com/bookmarks/",
-        }
+        },
       ],
       "stories": [
         {
           "when": "blocked",
           "fromUrl": "https://m.facebook.com/stories/",
           "toUrl": "https://m.facebook.com/bookmarks/",
-        }
+        },
       ],
       "pages": [],
     },
@@ -312,36 +315,23 @@ const CONFIG: Config = {
         "div[role='listitem'] > div:has(> div[aria-label='Pages'])",
       ],
     },
-    configUrl: "https://raw.githubusercontent.com/liamperritt/social-minimalist-config/refs/heads/main/config/facebook/",
+    configUrl:
+      "https://raw.githubusercontent.com/liamperritt/social-minimalist-config/refs/heads/main/config/facebook/v2/",
   },
   youtube: {
     webAppId: "youtube",
     baseUrlShort: "youtube.com",
     baseUrl: "https://m.youtube.com/",
     sourceUrl: "https://m.youtube.com/feed/subscriptions/",
-    signInUrl: "https://accounts.google.com/ServiceLogin?service=youtube&continue=https://m.youtube.com/",
-    redirectFromBaseUrl: true,
-    redirectFromUrlPrefixes: [
-      "https://www.youtube.com/",
-      "https://www.youtube.com/shorts/",
-      "https://m.youtube.com/shorts/",
-    ],
-    redirectFromExactUrls: [
-      "https://m.youtube.com/",
-    ],
-    openableExternalUrls: [
-      "https://accounts.google.com/",
-    ],
-    webAppSessionCookies: [
-      "SID",
-      "HSID",
-    ],
+    signInUrl:
+      "https://accounts.google.com/ServiceLogin?service=youtube&continue=https://m.youtube.com/",
+    openableExternalUrls: ["https://accounts.google.com/"],
+    webAppSessionCookies: ["SID", "HSID"],
     canUnblockFeatures: {
-      "distractions": false,
+      "replies": true,
       "feed": false,
       "shorts": false,
-      "comments": false,
-      "replies": false,
+      "distractions": false,
     },
     defaultRedirects: {
       "distractions": [
@@ -349,7 +339,7 @@ const CONFIG: Config = {
           "when": "blocked",
           "fromUrl": "https://www.youtube.com/",
           "toUrl": "https://m.youtube.com/feed/subscriptions/",
-        }
+        },
       ],
       "feed": [
         {
@@ -357,7 +347,7 @@ const CONFIG: Config = {
           "fromUrl": "https://m.youtube.com/",
           "toUrl": "https://m.youtube.com/feed/subscriptions/",
           "exactMatch": true,
-        }
+        },
       ],
       "shorts": [
         {
@@ -365,8 +355,12 @@ const CONFIG: Config = {
           "fromUrl": "https://m.youtube.com/shorts/",
           "toUrl": "https://m.youtube.com/feed/subscriptions/",
         },
+        {
+          "when": "blocked",
+          "fromUrl": "https://www.youtube.com/shorts/",
+          "toUrl": "https://m.youtube.com/feed/subscriptions/",
+        },
       ],
-      "comments": [],
       "replies": [],
     },
     defaultFilters: {
@@ -395,13 +389,13 @@ const CONFIG: Config = {
         "yt-tab-shape[tab-title='Shorts']", // Profile Shorts tab
         "ytm-shorts-lockup-view-model", // Profile Shorts
       ],
-      "comments": [],
       "replies": [
         "ytm-comment-replies-renderer", // Comment replies
       ],
     },
-    configUrl: "https://raw.githubusercontent.com/liamperritt/social-minimalist-config/refs/heads/main/config/youtube/",
-  }
-}
+    configUrl:
+      "https://raw.githubusercontent.com/liamperritt/social-minimalist-config/refs/heads/main/config/youtube/v2/",
+  },
+};
 
 export default CONFIG;
