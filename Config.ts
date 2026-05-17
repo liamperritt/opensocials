@@ -37,6 +37,7 @@ const CONFIG: AppConfigMap = {
     webAppSessionCookies: ["ds_user_id", "sessionid"],
     canUnblockFeatures: {
       "notes": true,
+      "replies": true,
       "favorites": true,
       "feed": false,
       "reels": false,
@@ -163,6 +164,7 @@ const CONFIG: AppConfigMap = {
           "exactMatch": true,
         },
       ],
+      "replies": [],
       "stories": [],
       "notes": [],
     },
@@ -196,6 +198,11 @@ const CONFIG: AppConfigMap = {
       "stories": [
         ".xvbhtw8.x1njnj16", // Stories panel
       ],
+      "replies": [
+        ".x11hdunq.x1nhvcw1.x1oa3qoh.x1qjc9v5.xqjyukv.xdt5ytf.x2lah0s.x1c4vz4f.xryxfnj.x1plvlek.x1uhb9sk.xbiv7yw.x16uus16.x1ga7v0g.x15mokao.x78zum5.xjbqb8w.x9f619.x1c1uobl.x18d9i69.xyri2b.xexx8yu.xat24cr.x14z9mp.xdj266r.html-div", // Comment replies
+        ".x1diwwjn.x14z9mp.x1d5wrs8.x87ps6o.x1a2a7pz.xggy1nq.x1hl2dhg.x16tdsg8.x1c1uobl.x18d9i69.xyri2b.xexx8yu.xat24cr.xdj266r.x3ct3a4.xt0psk2.x1ypdohk.x9f619.x14e42zd.x1qhh985.x10w94by.x972fbf.xstzfhl.x1sy0etr.x18oe1m7.x1ejq31n.xjbqb8w.x1i10hfl", // Reply to comment
+        ".xh8yej3.xseoqlg.xl56j7k.x78zum5.x6s0dn4", // Comment on post
+      ],
       "notes": [
         ".xhjk10j.x2lah0s.x1c4vz4f", // Notes panel
         ".x1vjfegm.x1a2a7pz.x1lku1pv.x87ps6o.x1q0g3np.x3nfvp2.xo1y3bh.x140muxe.xu25z0z.x1fmog5m.x1t137rt.xggy1nq.x1hl2dhg.x16tdsg8.x1n2onr6.x1c1uobl.x18d9i69.xyri2b.xexx8yu.xeuugli.x2lwn1j.x1lziwak.xat24cr.x14z9mp.xdj266r.x3ct3a4.x2lah0s.xdl72j9.x1ypdohk.x9f619.x14e42zd.x1qhh985.x10w94by.x972fbf.x1t7ytsu.x1q0q8m5.x18b5jzi.x13fuv20.x1phubyo.xqeqjp1.xc5r6h4.xjqpnuy.xjbqb8w.x1qjc9v5.x1i10hfl", // Profile Note bubble
@@ -204,8 +211,7 @@ const CONFIG: AppConfigMap = {
         ".x1nhvcw1.x1oa3qoh.x6s0dn4.xqjyukv.xdt5ytf.x2lah0s.x1c4vz4f.xryxfnj.x1plvlek.x1uhb9sk.xbiv7yw.x16uus16.x1ga7v0g.x15mokao.x78zum5.xjbqb8w.x9f619.x1c1uobl.x18d9i69.xyri2b.xexx8yu.x1lziwak.xat24cr.x14z9mp.xdj266r.html-div", // Feed
       ],
     },
-    configUrl:
-      "https://raw.githubusercontent.com/liamperritt/social-minimalist-config/refs/heads/main/config/instagram/v2/",
+    configUrl: "https://raw.githubusercontent.com/liamperritt/social-minimalist-config/refs/heads/main/config/instagram/v2/",
   },
   facebook: {
     webAppId: "facebook",
@@ -315,16 +321,14 @@ const CONFIG: AppConfigMap = {
         "div[role='listitem'] > div:has(> div[aria-label='Pages'])",
       ],
     },
-    configUrl:
-      "https://raw.githubusercontent.com/liamperritt/social-minimalist-config/refs/heads/main/config/facebook/v2/",
+    configUrl: "https://raw.githubusercontent.com/liamperritt/social-minimalist-config/refs/heads/main/config/facebook/v2/",
   },
   youtube: {
     webAppId: "youtube",
     baseUrlShort: "youtube.com",
     baseUrl: "https://m.youtube.com/",
     sourceUrl: "https://m.youtube.com/feed/subscriptions/",
-    signInUrl:
-      "https://accounts.google.com/ServiceLogin?service=youtube&continue=https://m.youtube.com/",
+    signInUrl: "https://accounts.google.com/ServiceLogin?service=youtube&continue=https://m.youtube.com/",
     openableExternalUrls: ["https://accounts.google.com/"],
     webAppSessionCookies: ["SID", "HSID"],
     canUnblockFeatures: {
@@ -393,8 +397,7 @@ const CONFIG: AppConfigMap = {
         "ytm-comment-replies-renderer", // Comment replies
       ],
     },
-    configUrl:
-      "https://raw.githubusercontent.com/liamperritt/social-minimalist-config/refs/heads/main/config/youtube/v2/",
+    configUrl: "https://raw.githubusercontent.com/liamperritt/social-minimalist-config/refs/heads/main/config/youtube/v2/",
   },
 };
 

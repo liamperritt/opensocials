@@ -848,7 +848,7 @@ const App = () => {
                 onPress={() => setConfigureModalVisible(false)}
                 accessibilityLabel="Close configure"
               >
-                <Text style={styles.infoCloseButtonText}>Done</Text>
+                <Text style={styles.infoCloseButtonText}>Save</Text>
               </Pressable>
             </View>
           </View>
